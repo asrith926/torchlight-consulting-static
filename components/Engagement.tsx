@@ -155,7 +155,7 @@ export default function Engagement() {
         >
           <p className="text-slate-600 leading-relaxed">
             Not sure which engagement model fits your needs? Book a 15-minute intro call 
-            and we'll design the perfect advisory structure for your platform's current stage and goals.
+            and we&apos;ll design the perfect advisory structure for your platform&apos;s current stage and goals.
           </p>
         </motion.div>
       </div>
