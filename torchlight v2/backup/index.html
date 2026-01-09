@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srikanth Tirumala - Torchlight Consulting | A cofounder who's not a cofounder</title>
+    <meta name="description" content="Strategic operational advisory for growth-stage technology companies. Serial entrepreneur with 3 successful exits helping founders increase valuation through 360-degree operational guidance.">
+    
+    <!-- Fonts - Adobe Fonts -->
+    <link rel="stylesheet" href="https://use.typekit.net/fvs6fgj.css">
+    
+    <!-- Fallback Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <img src="assets/images/torchlight-logo.png" alt="Torchlight" class="brand-logo">
+                <span class="brand-name">Torchlight Consulting</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Three.js Shader Animation Background -->
+        <div class="hero-shader-container"></div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-headline">A cofounder who's not a cofounder</h1>
+                
+                <div class="hero-description">
+                    <p>Operational, hands-on advisory for growth-stage technology companies. We work with founders to increase valuation through 360-degree guidance, informed by real-world experience, inspired by first principles thinking frameworks.</p>
+                </div>
+            </div>
+            
+            <div class="hero-scroll-indicator">
+                <div class="scroll-line"></div>
+                <span>Scroll</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h2>Informed by experience, driven by frameworks</h2>
+            </div>
+            
+            <div class="about-hero-grid">
+                <!-- Left Column: Portrait & Quote -->
+                <div class="about-portrait">
+                    <div class="portrait-container">
+                        <img src="assets/images/srikanth-portrait.jpg" alt="Srikanth Tirumala" class="portrait-image">
+                        <div class="portrait-overlay"></div>
+                    </div>
+                    <div class="signature-quote">
+                        <blockquote>"I work alongside founders with the urgency and commitment of a cofounder who's not a cofounder."</blockquote>
+                        <div class="quote-attribution">— Srikanth Tirumala</div>
+                    </div>
+                </div>
+                
+                <!-- Center Column: Story & Journey -->
+                <div class="about-story">
+                    <div class="story-intro">
+                        <p class="story-lead">Serial entrepreneur and engineer who's been where you are. Three successful exits, now helping growth-stage founders scale with frameworks that work.</p>
+                    </div>
+                    
+                    <div class="timeline-visual">
+                        <div class="timeline-step">
+                            <div class="step-icon">🏛️</div>
+                            <div class="step-content">
+                                <span class="step-title">Intel</span>
+                                <span class="step-desc">Micro-architecture engineering</span>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="step-icon">🚀</div>
+                            <div class="step-content">
+                                <span class="step-title">Founded Platys</span>
+                                <span class="step-desc">Communications technology</span>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="step-icon">📈</div>
+                            <div class="step-content">
+                                <span class="step-title">Scaled & Sold</span>
+                                <span class="step-desc">Three successful exits</span>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="step-icon">🎯</div>
+                            <div class="step-content">
+                                <span class="step-title">Torchlight</span>
+                                <span class="step-desc">Cofounder-level consulting</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="operating-principles">
+                        <h4>My Approach</h4>
+                        <div class="principles-grid">
+                            <div class="principle-item">
+                                <span class="principle-label">First-principles thinking</span>
+                            </div>
+                            <div class="principle-item">
+                                <span class="principle-label">Real operational experience</span>
+                            </div>
+                            <div class="principle-item">
+                                <span class="principle-label">Systematic value creation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column: Credentials Sidebar -->
+                <div class="about-credentials">
+                    <div class="credentials-section">
+                        <h4>Successful Exits</h4>
+                        <div class="exits-cards">
+                            <div class="exit-card">
+                                <div class="company-name">Platys Communications</div>
+                                <div class="exit-arrow">→</div>
+                                <div class="acquirer">Adaptec</div>
+                            </div>
+                            <div class="exit-card">
+                                <div class="company-name">Apere Inc</div>
+                                <div class="exit-arrow">→</div>
+                                <div class="acquirer">Citrix Systems</div>
+                            </div>
+                            <div class="exit-card">
+                                <div class="company-name">Hooper Labs</div>
+                                <div class="exit-arrow">→</div>
+                                <div class="acquirer">Kellton Tech</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="credentials-section">
+                        <h4>Current Roles</h4>
+                        <div class="roles-list">
+                            <div class="role-item">
+                                <span class="role-title">Founder & Principal</span>
+                                <span class="role-company">Torchlight Consulting</span>
+                            </div>
+                            <div class="role-item">
+                                <span class="role-title">20+ Years</span>
+                                <span class="role-company">Hardware & Software</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="philosophy section">
+        <!-- Three.js Shader Animation Background -->
+        <div class="philosophy-shader-container"></div>
+        
+        <div class="container">
+            <div class="philosophy-content">
+                <blockquote class="philosophy-quote">
+                    "Entrepreneurship is your ability to perceive the goal even within clouds of ambiguity and uncertainty and yet have the deepest conviction to achieve it."
+                </blockquote>
+                <div class="philosophy-mission">
+                    <p>We help businesses scale. We help ideas grow. We enable solutions reach a large audience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section id="approach" class="approach section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h2>The Architecture of Growth</h2>
+                <p class="section-subtitle">Three interconnected frameworks that transform vision into measurable value</p>
+            </div>
+            
+            <div class="architectures-grid">
+                <div class="architecture-card">
+                    <div class="architecture-header">
+                        <div class="architecture-number">01</div>
+                        <h3>Vision-to-Execution</h3>
+                    </div>
+                    <div class="architecture-question">How do you plan your today based on where you want to be in three years?</div>
+                    <div class="architecture-details">
+                        <div class="detail-item">Work backwards from target valuation</div>
+                        <div class="detail-item">Define revenue and team size requirements</div>
+                        <div class="detail-item">Build plan with milestones and revenue goals</div>
+                        <div class="detail-item">Develop pricing model</div>
+                    </div>
+                </div>
+                
+                <div class="architecture-card">
+                    <div class="architecture-header">
+                        <div class="architecture-number">02</div>
+                        <h3>Resource Optimization</h3>
+                    </div>
+                    <div class="architecture-question">How do you maximize outcomes with limited resources?</div>
+                    <div class="architecture-details">
+                        <div class="detail-item">Strategic planning and prioritization</div>
+                        <div class="detail-item">Intelligent budgeting frameworks</div>
+                        <div class="detail-item">Resource allocation optimization</div>
+                    </div>
+                </div>
+                
+                <div class="architecture-card">
+                    <div class="architecture-header">
+                        <div class="architecture-number">03</div>
+                        <h3>Scaling</h3>
+                    </div>
+                    <div class="architecture-question">How do you scale — adding a new product line, vertical, or region?</div>
+                    <div class="architecture-details">
+                        <div class="detail-item">New market adoption strategies</div>
+                        <div class="detail-item">Leapfrog & inorganic scale opportunities</div>
+                        <div class="detail-item">M&A readiness preparation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h2>How We Create Value Together</h2>
+            </div>
+            
+            <div class="services-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                        <div class="marker-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Initial Understanding</h3>
+                        <div class="service-grid">
+                            <div class="service-item">
+                                <h4>Consultation</h4>
+                                <p>Initial assessment of growth opportunities and operational challenges</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Prognosis</h4>
+                                <p>Comprehensive company health assessment and priority identification</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                        <div class="marker-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Operational Excellence</h3>
+                        <div class="service-grid">
+                            <div class="service-item">
+                                <h4>Target & Goal Setting</h4>
+                                <p>Clear, measurable objectives aligned with valuation goals</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Risk Analysis</h4>
+                                <p>Identify and mitigate operational, market, and strategic risks</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Strategy & Monitoring</h4>
+                                <p>Frameworks for consistent execution and performance tracking</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Value Creation</h3>
+                        <div class="service-grid">
+                            <div class="service-item">
+                                <h4>Market Expansion</h4>
+                                <p>Geographic expansion and partner ecosystem development</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Valuation Increase</h4>
+                                <p>Strategic initiatives driving measurable value</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Exit Preparation</h4>
+                                <p>Position for successful funding rounds or acquisition</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="section-header">
+                        <div class="section-number">04</div>
+                        <h2>Ready to unlock your potential?</h2>
+                    </div>
+                    
+                    <div class="contact-text">
+                        <p class="text-large">I work with ambitious founders of growth-stage technology companies who are ready to scale systematically and increase their valuation.</p>
+                        
+                        <div class="contact-details">
+                            <div class="detail-group">
+                                <h4>Focus Sectors</h4>
+                                <div class="sector-list">
+                                    <span class="sector-item">Artificial Intelligence</span>
+                                    <span class="sector-item">Cloud & Security</span>
+                                    <span class="sector-item">Hardware & Systems</span>
+                                    <span class="sector-item">SaaS Platforms</span>
+                                </div>
+                            </div>
+                            
+                            <div class="detail-group">
+                                <h4>Current Roles</h4>
+                                <p>Venture Advisor, Inflexor Ventures<br>
+                                Growth Partner, Vitra.ai<br>
+                                Technology Advisor, Kellton</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <form id="consultation-form" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="company">Company</label>
+                                <input type="text" id="company" name="company" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="stage">Stage</label>
+                                <select id="stage" name="stage" required>
+                                    <option value="">Select stage</option>
+                                    <option value="seed">Seed Stage</option>
+                                    <option value="series-a">Series A</option>
+                                    <option value="series-b">Series B</option>
+                                    <option value="series-c-plus">Series C+</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="challenge">Primary Challenge</label>
+                            <textarea id="challenge" name="challenge" rows="4" placeholder="What's the main operational or strategic challenge you're facing?"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary btn-full">Start a Conversation</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="brand-name">Torchlight Consulting</div>
+                    <p>Atlanta, GA</p>
+                </div>
+                <div class="footer-contact">
+                    <a href="mailto:srikanth@torchlightconsulting.com">srikanth@torchlightconsulting.com</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Torchlight Consulting LLC</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating CTA Button -->
+    <a href="#contact" class="floating-cta" aria-label="Start a conversation">
+        <span>Start a Conversation</span>
+        <span class="floating-cta-arrow">→</span>
+    </a>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
