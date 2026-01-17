@@ -986,53 +986,224 @@ window.addEventListener('beforeunload', () => {
 });
 
 // Stripe Integration
-const stripe = Stripe('pk_test_51QcWLTJJ33NzLH8h2rXb5gTSFLvVvSKDq0gRAH8EFD4z4wgkUIZJYcUTq5JB8lGnmXbUYFMc4Y4NpJMYtTvNO59t00tgJD2VEv'); // Replace with your publishable key
+const stripe = Stripe('pk_live_51R4T92K1VANbVS2vtvLzvDTBQsssILhtLPXz5C2s99rrZtKTOz4Ft4KF9EWM3VV9rZqrCh6ajB2nHZzUatqt4N4k00x9oo510c');
+
+function createPaymentModal() {
+    // Create modal HTML
+    const modalHTML = `
+        <div id="payment-modal" class="payment-modal">
+            <div class="payment-modal-content">
+                <button class="payment-modal-close">&times;</button>
+                <h2>Make a Payment</h2>
+                <p>Enter the amount you'd like to pay</p>
+                <div class="payment-amount-input">
+                    <span class="currency-symbol">$</span>
+                    <input type="number" id="payment-amount" min="1" step="any" placeholder="0.00" />
+                </div>
+                <button id="proceed-payment-btn" class="proceed-payment-btn">Proceed to Payment</button>
+                <p class="payment-secure-note">Secure payment powered by Stripe</p>
+            </div>
+        </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+    // Add modal styles
+    const modalStyles = `
+        <style>
+            .payment-modal {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                z-index: 10000;
+                align-items: center;
+                justify-content: center;
+            }
+            .payment-modal.active {
+                display: flex;
+            }
+            .payment-modal-content {
+                background: #1a1a1a;
+                padding: 2.5rem;
+                border-radius: 12px;
+                max-width: 400px;
+                width: 90%;
+                text-align: center;
+                position: relative;
+                border: 1px solid #333;
+            }
+            .payment-modal-close {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                background: none;
+                border: none;
+                color: #888;
+                font-size: 1.5rem;
+                cursor: pointer;
+                transition: color 0.2s;
+            }
+            .payment-modal-close:hover {
+                color: #fff;
+            }
+            .payment-modal h2 {
+                color: #fff;
+                margin-bottom: 0.5rem;
+                font-size: 1.5rem;
+            }
+            .payment-modal p {
+                color: #888;
+                margin-bottom: 1.5rem;
+            }
+            .payment-amount-input {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 1.5rem;
+            }
+            .currency-symbol {
+                color: #4a9eff;
+                font-size: 2rem;
+                margin-right: 0.5rem;
+            }
+            #payment-amount {
+                background: #0a0a0a;
+                border: 1px solid #333;
+                color: #fff;
+                font-size: 2rem;
+                padding: 0.75rem 1rem;
+                width: 150px;
+                border-radius: 8px;
+                text-align: center;
+            }
+            #payment-amount:focus {
+                outline: none;
+                border-color: #4a9eff;
+            }
+            #payment-amount::placeholder {
+                color: #555;
+            }
+            .proceed-payment-btn {
+                background: #4a9eff;
+                color: #fff;
+                border: none;
+                padding: 1rem 2rem;
+                font-size: 1rem;
+                font-weight: 600;
+                border-radius: 8px;
+                cursor: pointer;
+                width: 100%;
+                transition: background 0.2s;
+            }
+            .proceed-payment-btn:hover {
+                background: #3a8eef;
+            }
+            .proceed-payment-btn:disabled {
+                background: #333;
+                cursor: not-allowed;
+            }
+            .payment-secure-note {
+                font-size: 0.8rem;
+                color: #666;
+                margin-top: 1rem;
+                margin-bottom: 0;
+            }
+        </style>
+    `;
+    document.head.insertAdjacentHTML('beforeend', modalStyles);
+
+    return document.getElementById('payment-modal');
+}
 
 function initializeStripe() {
     const payButton = document.getElementById('pay-now-btn');
-    
+
     if (payButton) {
-        payButton.addEventListener('click', async () => {
+        const modal = createPaymentModal();
+        const closeBtn = modal.querySelector('.payment-modal-close');
+        const amountInput = document.getElementById('payment-amount');
+        const proceedBtn = document.getElementById('proceed-payment-btn');
+
+        // Open modal on pay button click
+        payButton.addEventListener('click', () => {
+            modal.classList.add('active');
+            amountInput.focus();
+        });
+
+        // Close modal
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        // Close on outside click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Process payment
+        proceedBtn.addEventListener('click', async () => {
+            const amount = parseFloat(amountInput.value);
+
+            if (isNaN(amount) || amount < 1) {
+                alert('Please enter an amount of at least $1');
+                return;
+            }
+
             try {
-                // Disable button during processing
-                payButton.disabled = true;
-                payButton.textContent = 'Processing...';
-                
-                // Create checkout session
+                proceedBtn.disabled = true;
+                proceedBtn.textContent = 'Processing...';
+
                 const response = await fetch('/api/create-checkout-session', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        priceId: 'price_1QcWLTJJ33NzLH8h2rXb5gTSFLvVvSKDq0gRAH8EFD4z4wgkUIZJYcUTq5JB8lGnmXbUYFMc4Y4NpJMYtTvNO59t00tgJD2VEv', // Replace with your price ID
+                        amount: amount,
                         successUrl: window.location.origin + '/success.html',
                         cancelUrl: window.location.origin + '/cancel.html'
                     })
                 });
-                
+
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    const error = await response.json();
+                    throw new Error(error.error || 'Payment failed');
                 }
-                
+
                 const session = await response.json();
-                
-                // Redirect to Stripe Checkout
+
                 const result = await stripe.redirectToCheckout({
                     sessionId: session.id
                 });
-                
+
                 if (result.error) {
-                    console.error('Stripe error:', result.error);
-                    alert('Payment failed. Please try again.');
+                    throw new Error(result.error.message);
                 }
             } catch (error) {
                 console.error('Payment error:', error);
-                alert('Payment failed. Please try again.');
+                alert(error.message || 'Payment failed. Please try again.');
             } finally {
-                // Re-enable button
-                payButton.disabled = false;
-                payButton.textContent = 'Pay Now';
+                proceedBtn.disabled = false;
+                proceedBtn.textContent = 'Proceed to Payment';
+            }
+        });
+
+        // Allow Enter key to submit
+        amountInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                proceedBtn.click();
             }
         });
     }

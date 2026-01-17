@@ -1,19 +1,40 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 module.exports = async (req, res) => {
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
-    const { priceId, successUrl, cancelUrl } = req.body;
+    const { amount, successUrl, cancelUrl } = req.body;
 
-    // Create Stripe checkout session
+    // Validate amount (minimum $1)
+    const amountInCents = Math.round(parseFloat(amount) * 100);
+    if (isNaN(amountInCents) || amountInCents < 100) {
+      return res.status(400).json({ error: 'Minimum amount is $1' });
+    }
+
+    // Create Stripe checkout session with dynamic pricing
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
       line_items: [
         {
-          price: priceId,
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: 'Torchlight Consulting - Payment',
+              description: 'Thank you for your support',
+            },
+            unit_amount: amountInCents,
+          },
           quantity: 1,
         },
       ],
@@ -21,13 +42,14 @@ module.exports = async (req, res) => {
       success_url: successUrl,
       cancel_url: cancelUrl,
       metadata: {
-        source: 'torchlight-consulting'
+        source: 'torchlight-consulting',
+        amount_usd: amount
       }
     });
 
     res.status(200).json({ id: session.id });
   } catch (error) {
     console.error('Error creating checkout session:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: error.message || 'Internal server error' });
   }
 };
