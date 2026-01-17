@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Srikanth Tirumala - Torchlight Consulting | A cofounder who's not a cofounder</title>
+    <title>Srikanth Tirumala - Torchlight Consulting | We help businesses scale</title>
     <meta name="description" content="Strategic operational advisory for growth-stage technology companies. Serial entrepreneur with 3 successful exits helping founders increase valuation through 360-degree operational guidance.">
     
     <!-- Fonts - Adobe Fonts -->
@@ -22,6 +22,9 @@
     <!-- Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     
+    <!-- Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
+    
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -37,21 +40,37 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <!-- Three.js Shader Animation Background -->
-        <div class="hero-shader-container"></div>
-        
         <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-headline">A cofounder who's not a cofounder</h1>
-                
-                <div class="hero-description">
-                    <p>Operational, hands-on advisory for growth-stage technology companies. We work with founders to increase valuation through 360-degree guidance, informed by real-world experience, inspired by first principles thinking frameworks.</p>
+            <div class="hero-grid">
+                <!-- Left: Text Content -->
+                <div class="hero-text-column">
+                    <h1 class="hero-headline">A founder's companion for growth, decisions and success</h1>
+
+                    <div class="hero-promises">
+                        <div class="promise-item">
+                            <span class="promise-helping">HELPING</span>
+                            <span class="promise-action">ideas shape</span>
+                        </div>
+                        <div class="promise-item">
+                            <span class="promise-helping">HELPING</span>
+                            <span class="promise-action">solutions grow</span>
+                        </div>
+                        <div class="promise-item">
+                            <span class="promise-helping">HELPING</span>
+                            <span class="promise-action">businesses scale</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Portrait -->
+                <div class="hero-portrait-column">
+                    <img src="assets/images/srikanth-portrait.png" alt="Srikanth Tirumala" class="hero-portrait-image">
                 </div>
             </div>
-            
+
             <div class="hero-scroll-indicator">
-                <div class="scroll-line"></div>
-                <span>Scroll</span>
+                <span>Scroll to explore</span>
+                <div class="scroll-arrow"></div>
             </div>
         </div>
     </section>
@@ -68,7 +87,7 @@
                 <!-- Left Column: Portrait & Quote -->
                 <div class="about-portrait">
                     <div class="portrait-container">
-                        <img src="assets/images/srikanth-portrait.jpg" alt="Srikanth Tirumala" class="portrait-image">
+                        <img src="assets/images/srikanth-portrait.png" alt="Srikanth Tirumala" class="portrait-image">
                         <div class="portrait-overlay"></div>
                     </div>
                     <div class="signature-quote">
@@ -408,6 +427,11 @@
                     <a href="mailto:srikanth@torchlightconsulting.com">srikanth@torchlightconsulting.com</a>
                 </div>
             </div>
+            <div class="footer-payment">
+                <button id="pay-now-btn" class="pay-now-button">
+                    <span>Pay Now</span>
+                </button>
+            </div>
             <div class="footer-bottom">
                 <p>&copy; 2024 Torchlight Consulting LLC</p>
             </div>
@@ -415,10 +439,7 @@
     </footer>
 
     <!-- Floating CTA Button -->
-    <a href="#contact" class="floating-cta" aria-label="Start a conversation">
-        <span>Start a Conversation</span>
-        <span class="floating-cta-arrow">→</span>
-    </a>
+    <a href="#contact" class="floating-cta" aria-label="Schedule a call" style="position: fixed; bottom: 1.5rem; right: 1.5rem; padding: 0.75rem 1.25rem; background: #4a9eff; color: white; border-radius: 50px; font-weight: 600; text-decoration: none; box-shadow: 0 4px 20px rgba(74, 158, 255, 0.4); z-index: 1000;">Schedule a Call</a>
 
     <script src="assets/js/script.js"></script>
 </body>

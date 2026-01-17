@@ -51,16 +51,28 @@ document.addEventListener('DOMContentLoaded', function() {
         const heroTimeline = gsap.timeline();
         
         heroTimeline
-            .from('.hero-headline', {
+            .from('.hero-portrait-image', {
                 opacity: 0,
-                duration: 1.2,
-                ease: 'power2.out'
+                scale: 0.8,
+                duration: 1.5,
+                ease: 'power2.out',
+                delay: 0.5
             })
-            .from('.hero-description', {
+            .from('.hero-tagline', {
                 opacity: 0,
-                duration: 0.8,
-                ease: 'power2.out'
-            }, '-=0.8');
+                y: 30,
+                duration: 1.2,
+                ease: 'power2.out',
+                delay: 1
+            }, 0)
+            .from('.hero-speech-bubble', {
+                opacity: 0,
+                y: 20,
+                scale: 0.95,
+                duration: 1,
+                ease: 'power2.out',
+                delay: 1.8
+            }, 0);
 
 
         // Section headers animation
@@ -972,3 +984,63 @@ window.addEventListener('beforeunload', () => {
         heroShaderAnimation.destroy();
     }
 });
+
+// Stripe Integration
+const stripe = Stripe('pk_test_51QcWLTJJ33NzLH8h2rXb5gTSFLvVvSKDq0gRAH8EFD4z4wgkUIZJYcUTq5JB8lGnmXbUYFMc4Y4NpJMYtTvNO59t00tgJD2VEv'); // Replace with your publishable key
+
+function initializeStripe() {
+    const payButton = document.getElementById('pay-now-btn');
+    
+    if (payButton) {
+        payButton.addEventListener('click', async () => {
+            try {
+                // Disable button during processing
+                payButton.disabled = true;
+                payButton.textContent = 'Processing...';
+                
+                // Create checkout session
+                const response = await fetch('/api/create-checkout-session', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        priceId: 'price_1QcWLTJJ33NzLH8h2rXb5gTSFLvVvSKDq0gRAH8EFD4z4wgkUIZJYcUTq5JB8lGnmXbUYFMc4Y4NpJMYtTvNO59t00tgJD2VEv', // Replace with your price ID
+                        successUrl: window.location.origin + '/success.html',
+                        cancelUrl: window.location.origin + '/cancel.html'
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                
+                const session = await response.json();
+                
+                // Redirect to Stripe Checkout
+                const result = await stripe.redirectToCheckout({
+                    sessionId: session.id
+                });
+                
+                if (result.error) {
+                    console.error('Stripe error:', result.error);
+                    alert('Payment failed. Please try again.');
+                }
+            } catch (error) {
+                console.error('Payment error:', error);
+                alert('Payment failed. Please try again.');
+            } finally {
+                // Re-enable button
+                payButton.disabled = false;
+                payButton.textContent = 'Pay Now';
+            }
+        });
+    }
+}
+
+// Initialize Stripe when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeStripe);
+} else {
+    initializeStripe();
+}
