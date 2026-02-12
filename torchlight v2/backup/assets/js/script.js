@@ -299,47 +299,75 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Header scroll effects
-        let lastScrollY = 0;
-        const header = document.querySelector('.header');
+        // let lastScrollY = 0;
+        // const header = document.querySelector('.header');
         
+        // ScrollTrigger.create({
+        //     start: 'top -80',
+        //     end: 'max',
+        //     onUpdate: (self) => {
+        //         const currentScrollY = self.scroll();
+                
+        //         if (currentScrollY > 100) {
+        //             gsap.to(header, {
+        //                 backgroundColor: 'rgba(10, 10, 10, 0.95)',
+        //                 backdropFilter: 'blur(20px)',
+        //                 duration: 0.3
+        //             });
+        //         } else {
+        //             gsap.to(header, {
+        //                 backgroundColor: 'rgba(10, 10, 10, 0.8)',
+        //                 backdropFilter: 'blur(20px)',
+        //                 duration: 0.3
+        //             });
+        //         }
+                
+        //         // Hide/show header on scroll direction
+        //         if (currentScrollY > lastScrollY && currentScrollY > 200) {
+        //             gsap.to(header, {
+        //                 y: -80,
+        //                 duration: 0.3,
+        //                 ease: 'power2.out'
+        //             });
+        //         } else {
+        //             gsap.to(header, {
+        //                 y: 0,
+        //                 duration: 0.3,
+        //                 ease: 'power2.out'
+        //             });
+        //         }
+                
+        //         lastScrollY = currentScrollY;
+        //     }
+        // });
+
+        // Header scroll effects (STICKY, ALWAYS VISIBLE)
+        const header = document.querySelector('.header');
+
         ScrollTrigger.create({
-            start: 'top -80',
+            start: 'top top',
             end: 'max',
             onUpdate: (self) => {
                 const currentScrollY = self.scroll();
-                
-                if (currentScrollY > 100) {
+
+                if (currentScrollY > 10) {
                     gsap.to(header, {
                         backgroundColor: 'rgba(10, 10, 10, 0.95)',
-                        backdropFilter: 'blur(20px)',
-                        duration: 0.3
+                        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.4)',
+                        duration: 0.25,
+                        overwrite: true
                     });
                 } else {
                     gsap.to(header, {
-                        backgroundColor: 'rgba(10, 10, 10, 0.8)',
-                        backdropFilter: 'blur(20px)',
-                        duration: 0.3
+                        backgroundColor: 'rgba(10, 10, 10, 0.85)',
+                        boxShadow: 'none',
+                        duration: 0.25,
+                        overwrite: true
                     });
                 }
-                
-                // Hide/show header on scroll direction
-                if (currentScrollY > lastScrollY && currentScrollY > 200) {
-                    gsap.to(header, {
-                        y: -80,
-                        duration: 0.3,
-                        ease: 'power2.out'
-                    });
-                } else {
-                    gsap.to(header, {
-                        y: 0,
-                        duration: 0.3,
-                        ease: 'power2.out'
-                    });
-                }
-                
-                lastScrollY = currentScrollY;
             }
         });
+
 
         // Mobile menu toggle
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
@@ -398,6 +426,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         }
+
+        //pay now 
+        const moreMenuBtn = document.querySelector('.more-menu');
+const moreDropdown = document.querySelector('.more-dropdown');
+
+if (moreMenuBtn && moreDropdown) {
+    document.addEventListener('click', (e) => {
+        if (moreMenuBtn.contains(e.target)) {
+            e.stopPropagation();
+            moreDropdown.style.display =
+                moreDropdown.style.display === 'block' ? 'none' : 'block';
+        } else if (!moreDropdown.contains(e.target)) {
+            moreDropdown.style.display = 'none';
+        }
+    });
+}
+
     }
 
     function initializeForm() {
