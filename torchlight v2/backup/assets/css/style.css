@@ -231,7 +231,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Header */
-/* .header {
+.header {
     position: fixed;
     top: 0;
     left: 0;
@@ -241,26 +241,8 @@ h1, h2, h3, h4, h5, h6 {
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--color-border-light);
     transition: var(--transition-base);
-}  */
-
-/* New Header Code starts */
-.header {
-    position: sticky;
-    top: 0;
-    z-index: 10000; /* higher than shaders & floating CTA */
-    background-color: rgba(10, 10, 10, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--color-border-light);
-    
-}
-.header.is-scrolled {
-    background-color: rgba(10, 10, 10, 0.95);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-
-/* new header code end  --- Pranjali */
 .nav {
     display: flex;
     align-items: center;
@@ -293,11 +275,6 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     gap: var(--space-8);
-}
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: var(--space-4);
 }
 
 .nav-links a {
@@ -342,56 +319,10 @@ h1, h2, h3, h4, h5, h6 {
     transition: var(--transition-base);
 }
 
-
-/* pay now css  starts*/
-.more-wrapper {
-    position: relative;
-}
-
-/* Two dots */
-.more-menu {
-    background: none;
-    border: none;
-    color: #9a9a9a;
-    font-size: 22px;
-    letter-spacing: 2px;
-    cursor: pointer;
-    padding: 6px 8px;
-}
-
-/* Popup */
-.more-dropdown {
-    position: absolute;
-    top: 42px;
-    right: 0;
-    background: #111;
-    border: 1px solid #222;
-    border-radius: 6px;
-    padding: 8px 14px;
-    display: none;
-    z-index: 10001;
-}
-
-.more-dropdown a {
-    color: #9a9a9a;
-    text-decoration: none;
-    font-size: 14px;
-    white-space: nowrap;
-}
-
-.more-dropdown a:hover {
-    color: #ccc;
-}
-
-/* css end */
-
 /* Sections */
 .section {
     padding: var(--space-32) 0;
     position: relative;
-}
-section[id] {
-    scroll-margin-top: 90px; /* header height (80px) + buffer */
 }
 
 .section-header {
@@ -429,11 +360,10 @@ section[id] {
     justify-content: center;
     text-align: center;
     position: relative;
-    /* overflow: hidden;  */ /*Pranjali*/
-    overflow: visible;
+    overflow: hidden;
 }
 
-/* Three.js Hero Shader Container  15-25 request a quote discount*/
+/* Three.js Hero Shader Container */
 .hero-shader-container {
     position: absolute;
     top: 0;
@@ -463,8 +393,6 @@ section[id] {
     margin: 0 auto;
     margin-top: 80px;
     padding: 2rem 0;
-    margin-top: 0px;   /*Pranjali*/
-    
 }
 
 .hero-portrait {
@@ -600,7 +528,6 @@ section[id] {
     color: var(--color-text-muted);
     font-size: var(--font-size-sm);
 }
-
 
 .scroll-line {
     width: 1px;
@@ -1405,7 +1332,7 @@ section[id] {
 }
 
 /* Footer Payment Section */
-/* .footer-payment {
+.footer-payment {
     display: flex;
     justify-content: center;
     padding: 2rem 0 1rem;
@@ -1434,7 +1361,7 @@ section[id] {
 
 .pay-now-button:active {
     transform: translateY(0);
-} */
+}
 
 /* Floating CTA Button */
 .floating-cta {
@@ -1562,12 +1489,6 @@ section[id] {
     
     .mobile-menu-toggle {
         display: flex;
-    }
-    
-     .hero-scroll-indicator {
-        position: relative;
-        bottom: auto;
-        margin-top: 40px;
     }
     
     .hero {
